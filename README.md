@@ -2,15 +2,15 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# [PharmaNear] 🎯
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: [Eclipse]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [Akhila K R] - [Jyothi Engineering College]
+- Member 2: [Archana Sajith] - [Jyothi Engineering College]
 
 ### Hosted Project Link
 [mention your project hosted link here]
