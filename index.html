@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PharmaNear - Find Medicines Nearby</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZq6qn8ybXUZ7oehqhwXLo6tvpRUVCs2w&libraries=places"></script>
+    <script defer src="firebase.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>PharmaNear</h1>
+        <label class="emergency-toggle">
+            <input type="checkbox" id="emergencyMode">
+            <span>Emergency Mode</span>
+        </label>
+        <a href="pharmacy.html" class="User-login-link">Pharmacy Login</a>
+    </header>
+    <main>
+        <section class="card search-section">
+            <h2>Search Medicine</h2>
+            <input type="text" id="searchInput" placeholder="Enter medicine name...">
+            <button id="searchBtn">Search</button>
+            <div class="error-message" id="searchError"></div>
+            <div id="medicineResult" class="hidden"></div>
+        </section>
+        <section class="card location-section">
+            <h2>Locate Medicine</h2>
+            <form id="locationForm">
+                <input type="text" id="district" placeholder="District" required>
+                <input type="text" id="place" placeholder="Place" required>
+                <input type="text" id="pincode" placeholder="Pin Code" required>
+                <button type="button" id="gpsBtn">Use GPS</button>
+                <button type="submit">Search Pharmacies</button>
+            </form>
+            <div id="map" class="map"></div>
+            
+            <!-- Available Pharmacies Container -->
+            <div id="pharmaciesContainer" class="pharmacies-container">
+                <div class="pharmacies-header">
+                    <h2>💊 Available Pharmacies Near You</h2>
+                    <p class="pharmacies-subtitle">Click on any pharmacy to view details and place an order</p>
+                </div>
+                <div id="pharmacyList" class="pharmacies-list"></div>
+            </div>
+        </section>
+        <!-- Order confirmation removed -->
+        <section class="card hidden" id="askMeSection">
+            <h2>Notify Me</h2>
+            <form id="askMeForm">
+                <input type="email" id="notifyEmail" placeholder="Your Email" required>
+                <input type="text" id="notifyPhone" placeholder="Your Phone (optional)">
+                <button type="submit">Notify Me</button>
+            </form>
+            <div class="error-message" id="askMeError"></div>
+            <div class="success-message" id="askMeSuccess"></div>
+        </section>
+    </main>
+
+    <!-- Order Modal -->
+    <div id="orderModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 30px; border-radius: 8px; max-width: 500px; width: 90%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="margin: 0;">Order Medicine</h2>
+                <button onclick="closeOrderForm()" style="background: none; border: none; font-size: 24px; color: #999; cursor: pointer;">✕</button>
+            </div>
+            
+            <div style="background: #f0f8ff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <div><strong>Pharmacy:</strong> <span id="orderPharmacyName"></span></div>
+                <div style="margin-top: 5px;"><strong>Medicine:</strong> <span id="orderMedicineName"></span></div>
+                <div style="margin-top: 5px;"><strong>Pharmacy Contact:</strong> <span id="orderPharmacyPhone"></span></div>
+            </div>
+            
+            <form id="orderForm">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Quantity:</label>
+                    <input type="number" id="orderQuantity" min="1" max="10" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Your Name:</label>
+                    <input type="text" id="orderCustomerName" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Your Phone:</label>
+                    <input type="tel" id="orderCustomerPhone" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Delivery Address:</label>
+                    <textarea id="orderCustomerAddress" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; min-height: 70px;"></textarea>
+                </div>
+                
+                <div id="orderSuccess"></div>
+                
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="submit" style="flex: 1; background: #27ae60; color: white; padding: 10px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Confirm Order</button>
+                    <button type="button" onclick="closeOrderForm()" style="flex: 1; background: #95a5a6; color: white; padding: 10px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
