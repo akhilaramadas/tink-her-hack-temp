@@ -2,11 +2,11 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [PharmaNear] 🎯
+# PharmaNear 🎯
 
 ## Basic Details
 
-### Team Name: [Eclipse]
+### Team Name: Eclipse
 
 ### Team Members
 - Member 1: [Akhila K R] - [Jyothi Engineering College]
