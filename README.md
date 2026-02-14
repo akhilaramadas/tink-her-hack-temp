@@ -9,20 +9,19 @@
 ### Team Name: Eclipse
 
 ### Team Members
-- Member 1: [Akhila K R] - [Jyothi Engineering College]
-- Member 2: [Archana Sajith] - [Jyothi Engineering College]
+- Member 1: Akhila K R - Jyothi Engineering College
+- Member 2: Archana Sajith - Jyothi Engineering College
 
 ### Hosted Project Link
-[mention your project hosted link here]
-
+https://pharma-near.vercel.app/
 ### Project Description
-[2-3 lines about what your project does]
-
+PharmaNear is a smart web application that helps users quickly find the availability of specific medicines in nearby pharmacies based on their location. It integrates Google Maps to display nearby medical stores, includes an emergency mode for life-saving drugs, and allows users to get notified when a medicine is back in stock. Pharmacies can log in to update real-time medicine availability, ensuring accurate and reliable information.
 ### The Problem statement
-[What problem are you solving?]
+Many people struggle to find essential medicines quickly, especially during emergencies or late hours, as there is no centralized platform to check real-time availability across nearby pharmacies. Patients often have to visit multiple medical stores physically or make numerous phone calls, which wastes critical time and can put lives at risk. There is a lack of a reliable system that connects users and pharmacies for instant medicine availability updates and notifications.
+
 
 ### The Solution
-[How are you solving it?]
+PharmaNear solves this problem by providing a centralized web platform where users can search for specific medicines and instantly check their availability in nearby pharmacies using location-based services and Google Maps integration. The system allows pharmacies to log in and update their stock in real time, ensuring accurate and up-to-date information. Additionally, features like Emergency Mode prioritize life-saving medicines within a 5KM radius, and the “Notify Me” option alerts users when a medicine becomes available, saving time and potentially lives.
 
 ---
 
