@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login - PharmaNear</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS (for OpenStreetMap - FREE, NO API KEY!) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    <script defer src="firebase.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>PharmaNear</h1>
+        <a href="index.html" class="User-login-link">User Home</a>
+    </header>
+    <main>
+        <section class="card">
+            <h2>User Login</h2>
+            <form id="UserLoginForm">
+                <input type="email" id="User Email" placeholder="User Email" required>
+                <input type="password" id="User Password" placeholder="Password" required>
+                <a href="index.html" class="btn-primary">Login</a>
+                <div class="error-message" id="User LoginError"></div>
+            </form>
+        </section>
+        <section class="card hidden" id="User Dashboard">
+            <h2>Update Stock</h2>
+            <form id="stockForm">
+                <input type="text" id="pharmacyMedicine" placeholder="Medicine Name" required>
+                <input type="number" id="pharmacyStock" placeholder="Stock Count" required>
+                <button type="submit">Update Stock</button>
+                <div class="success-message" id="stockSuccess"></div>
+            </form>
+            <button id="UserLogoutBtn">Logout</button>
+        </section>
+    </main>
+</body>
+</html>
